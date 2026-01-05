@@ -1,0 +1,18 @@
+.wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--gray-light);
+    border-radius: 10px;
+    padding: 16px 32px;
+    width: 112px;
+    height: 96px;
+    mix-blend-mode: multiply;
+    cursor: pointer;
+}
+
+.box {
+    width: 32px;
+    height: 32px;
+    fill: var(--main);
+}

@@ -1,0 +1,11 @@
+.headContainer {
+    display: flex;
+    align-items: center;
+    gap: 450px;
+}
+
+
+.logoLink {
+    width: 136px;
+    height: 16px;
+}

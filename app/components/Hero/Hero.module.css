@@ -1,0 +1,33 @@
+.hero {
+    padding: 260px 0;
+    background-image: url('/images/hero_img_opt.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.contentBox {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-right: auto;
+}
+
+.titleBox {
+    gap: 16px;
+
+}
+
+.titleBox h1 {
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 67%;
+    color: var(--inputs);
+}
+
+.titleBox p {
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 133%;
+    color: var(--inputs);
+}

@@ -1,5 +1,5 @@
 {
-  "name": "my-app",
+  "name": "traveltrucks_career_hw1",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,9 +9,14 @@
     "lint": "eslint"
   },
   "dependencies": {
+    "axios": "^1.13.2",
+    "clsx": "^2.1.1",
     "next": "16.1.1",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-datepicker": "^9.1.0",
+    "react-dom": "19.2.3",
+    "react-rating": "^2.0.5",
+    "zustand": "^5.0.9"
   },
   "devDependencies": {
     "@types/node": "^20",
