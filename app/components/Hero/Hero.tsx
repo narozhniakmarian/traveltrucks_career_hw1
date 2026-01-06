@@ -1,3 +1,5 @@
+"use client";
+
 import { useRouter } from "next/navigation";
 import { IButton } from "../ui/IButton/IButton";
 import styles from "./Hero.module.css";

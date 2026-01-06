@@ -75,14 +75,11 @@
     gap: 4px;
 }
 
-.gray {
-    width: 16px;
-    height: 16px;
+.subtitleRow svg.gray {
     fill: var(--badges);
-    transition: all .3 ease-in-out;
 }
 
-.gold {
+.subtitleRow svg.gold {
     fill: var(--rating);
 }
 

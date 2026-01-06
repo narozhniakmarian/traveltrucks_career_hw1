@@ -3,10 +3,11 @@ import { create } from 'zustand';
 interface BookingFormState {
     name: string;
     email: string;
-    date: string;
+    startDate: Date | null;
+    endDate: Date | null;
     comment: string;
 
-    setField: (field: string, value: string) => void;
+    setField: (field: string, value: any) => void;
     reset: () => void;
     hydrate: () => void;
 }
@@ -14,7 +15,8 @@ interface BookingFormState {
 export const useBookingFormStore = create<BookingFormState>((set, get) => ({
     name: '',
     email: '',
-    date: '',
+    startDate: null,
+    endDate: null,
     comment: '',
 
     setField(field, value) {
@@ -22,12 +24,17 @@ export const useBookingFormStore = create<BookingFormState>((set, get) => ({
 
         if (typeof window !== 'undefined') {
             const state = get();
-            localStorage.setItem('bookingForm', JSON.stringify(state));
+            const storageState = {
+                ...state,
+                startDate: state.startDate?.toISOString() || null,
+                endDate: state.endDate?.toISOString() || null,
+            };
+            localStorage.setItem('bookingForm', JSON.stringify(storageState));
         }
     },
 
     reset() {
-        set({ name: '', email: '', date: '', comment: '' });
+        set({ name: '', email: '', startDate: null, endDate: null, comment: '' });
         if (typeof window !== 'undefined') {
             localStorage.removeItem('bookingForm');
         }
@@ -40,7 +47,11 @@ export const useBookingFormStore = create<BookingFormState>((set, get) => ({
 
         try {
             const parsed = JSON.parse(raw);
-            set(parsed);
+            set({
+                ...parsed,
+                startDate: parsed.startDate ? new Date(parsed.startDate) : null,
+                endDate: parsed.endDate ? new Date(parsed.endDate) : null,
+            });
         } catch { }
     },
 }));

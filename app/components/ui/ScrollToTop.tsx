@@ -12,7 +12,7 @@ const ScrollToTop = ({ isVisible, onClick }: ScrollToTopProps) => {
             onClick={onClick}
         >
             <svg width="40" height="30">
-                <use href="svg/svg_spit.svg#icon-arrow"></use>
+                <use href="/svg/svg_spit.svg#icon-arrow"></use>
             </svg>
         </button>
     );

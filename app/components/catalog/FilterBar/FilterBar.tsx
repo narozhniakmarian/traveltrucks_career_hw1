@@ -53,7 +53,7 @@ export function FilterBar() {
           label="Location"
           icon={
             <svg>
-              <use href="svg/svg_spit.svg#icon-map" />
+              <use href="/svg/svg_spit.svg#icon-map" />
             </svg>
           }
           placeholder="City"

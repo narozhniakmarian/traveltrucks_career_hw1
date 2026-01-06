@@ -4,9 +4,12 @@ import { useBookingFormStore } from '@/app/store/bookingFormStore';
 import { useEffect } from 'react';
 import { IInput } from '../../ui/IInput/IInput';
 import { IButton } from '../../ui/IButton/IButton';
+import { BookingDatePicker } from '../Calendar';
+import styles from './BookingForm.module.css';
+import toast from 'react-hot-toast';
 
 export function BookingForm() {
-    const { name, email, date, comment, setField, reset, hydrate } =
+    const { name, email, comment, setField, reset, hydrate } =
         useBookingFormStore();
 
     useEffect(() => {
@@ -15,37 +18,44 @@ export function BookingForm() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        alert('Booking successful!');
+        toast.success('Booking successful!');
         reset();
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <IInput
-                value={name}
-                onChange={(e) => setField('name', e.target.value)}
-                placeholder="Name"
-            />
+        <div className={styles.container}>
+            <h3 className={styles.title}>Book your campervan now</h3>
+            <p className={styles.subtitle}>Stay connected! We are always ready to help you.</p>
 
-            <IInput
-                value={email}
-                onChange={(e) => setField('email', e.target.value)}
-                placeholder="Email"
-            />
+            <form className={styles.form} onSubmit={handleSubmit}>
+                <IInput
+                    value={name}
+                    onChange={(e) => setField('name', e.target.value)}
+                    placeholder="Name*"
+                    required
+                />
 
-            <IInput
-                type="date"
-                value={date}
-                onChange={(e) => setField('date', e.target.value)}
-            />
+                <IInput
+                    type="email"
+                    value={email}
+                    onChange={(e) => setField('email', e.target.value)}
+                    placeholder="Email*"
+                    required
+                />
 
-            <textarea
-                value={comment}
-                onChange={(e) => setField('comment', e.target.value)}
-                placeholder="Comment"
-            />
+                <BookingDatePicker />
 
-            <IButton type="submit" variant="primary">Send</IButton>
-        </form>
+                <textarea
+                    className={styles.textarea}
+                    value={comment}
+                    onChange={(e) => setField('comment', e.target.value)}
+                    placeholder="Comment"
+                />
+
+                <IButton type="submit" variant="primary" className={styles.submitButton}>
+                    Send
+                </IButton>
+            </form>
+        </div>
     );
 }

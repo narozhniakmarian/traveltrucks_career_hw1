@@ -4,7 +4,7 @@ export const FEATURES_MAP = {
         label: "AC",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-ac" />
+                <use href="/svg/svg_spit.svg#icon-ac" />
             </svg>
         ),
         value: "AC",
@@ -13,7 +13,7 @@ export const FEATURES_MAP = {
         label: "Kitchen",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-cup" />
+                <use href="/svg/svg_spit.svg#icon-cup" />
             </svg>
         ),
         value: "kitchen",
@@ -22,7 +22,7 @@ export const FEATURES_MAP = {
         label: "Bathroom",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-bathroom" />
+                <use href="/svg/svg_spit.svg#icon-bathroom" />
             </svg>
         ),
         value: "bathroom",
@@ -31,7 +31,7 @@ export const FEATURES_MAP = {
         label: "TV",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-tv" />
+                <use href="/svg/svg_spit.svg#icon-tv" />
             </svg>
         ),
         value: "TV",
@@ -40,7 +40,7 @@ export const FEATURES_MAP = {
         label: "Automatic",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-aitomatic" />
+                <use href="/svg/svg_spit.svg#icon-aitomatic" />
             </svg>
         ),
         value: "transmission",
@@ -49,7 +49,7 @@ export const FEATURES_MAP = {
         label: "Van",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-van" />
+                <use href="/svg/svg_spit.svg#icon-van" />
             </svg>
         ),
         value: "van",
@@ -58,7 +58,7 @@ export const FEATURES_MAP = {
         label: "Fully Integrated",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-fully" />
+                <use href="/svg/svg_spit.svg#icon-fully" />
             </svg>
         ),
         value: "fully-integrated",
@@ -67,7 +67,7 @@ export const FEATURES_MAP = {
         label: "Alcove",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-alcove" />
+                <use href="/svg/svg_spit.svg#icon-alcove" />
             </svg>
         ),
         value: "alcove",
@@ -76,7 +76,7 @@ export const FEATURES_MAP = {
         label: "Fridge",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-fridge" />
+                <use href="/svg/svg_spit.svg#icon-fridge" />
             </svg>
         ),
         value: "fridge",
@@ -85,7 +85,7 @@ export const FEATURES_MAP = {
         label: "Petrol",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-petrol" />
+                <use href="/svg/svg_spit.svg#icon-petrol" />
             </svg>
         ),
         value: "petrol",
@@ -94,7 +94,7 @@ export const FEATURES_MAP = {
         label: "Radio",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-radio" />
+                <use href="/svg/svg_spit.svg#icon-radio" />
             </svg>
         ),
         value: "radio",
@@ -103,7 +103,7 @@ export const FEATURES_MAP = {
         label: "Water",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-water" />
+                <use href="/svg/svg_spit.svg#icon-water" />
             </svg>
         ),
         value: "water",
@@ -112,7 +112,7 @@ export const FEATURES_MAP = {
         label: "Gas",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-gas" />
+                <use href="/svg/svg_spit.svg#icon-gas" />
             </svg>
         ),
         value: "gas",
@@ -121,7 +121,7 @@ export const FEATURES_MAP = {
         label: "Microwave",
         icon: (
             <svg>
-                <use href="svg/svg_spit.svg#icon-microwave" />
+                <use href="/svg/svg_spit.svg#icon-microwave" />
             </svg>
         ),
         value: "microwave",

@@ -1,3 +1,5 @@
+"use client";
+
 import Image from "next/image";
 import styles from "./CamperCard.module.css";
 import { CamperCardType } from "@/app/types/camper";
@@ -16,7 +18,7 @@ export function CamperCard({
   tags = [],
   gallery = [],
   image,
-  reviews,
+  reviews = [],
   location,
   ...camperData
 }: CamperCardType & any) {
@@ -25,7 +27,12 @@ export function CamperCard({
 
   const router = useRouter();
 
-  const handleFavorite = () => {
+  const handleCardClick = () => {
+    router.push(`/catalog/${id}`);
+  };
+
+  const handleFavorite = (e: React.MouseEvent) => {
+    e.stopPropagation();
     toggleFavorite({
       id,
       name,
@@ -39,9 +46,10 @@ export function CamperCard({
     });
   };
 
-  const avgRating = reviews.length
-    ? reviews.reduce((sum: number, r: any) => sum + r.reviewer_rating, 0) /
-    reviews.length
+  const reviewsList = Array.isArray(reviews) ? reviews : [];
+  const avgRating = reviewsList.length
+    ? reviewsList.reduce((sum: number, r: any) => sum + r.reviewer_rating, 0) /
+    reviewsList.length
     : 0;
 
   const displayTags: FeatureKey[] = [];
@@ -60,7 +68,7 @@ export function CamperCard({
   const imageUrl = gallery?.[0]?.thumb || image || "/images/placeholder.png";
 
   return (
-    <div className={styles.cardContainer}>
+    <div className={styles.cardContainer} onClick={handleCardClick} style={{ cursor: 'pointer' }}>
       <Image
         src={imageUrl}
         width={292}
@@ -82,7 +90,7 @@ export function CamperCard({
               onClick={handleFavorite}
               className={isFavorite(id) ? styles.favorite : ""}
             >
-              <use href="svg/svg_spit.svg#icon-heart" />
+              <use href="/svg/svg_spit.svg#icon-heart" />
             </svg>
           </div>
         </div>
@@ -90,16 +98,16 @@ export function CamperCard({
         <div className={styles.subtitleRow}>
           <div>
             <svg className={avgRating > 0 ? styles.gold : styles.gray}>
-              <use href="svg/svg_spit.svg#icon-rating" />
+              <use href="/svg/svg_spit.svg#icon-rating" />
             </svg>
             <p className={styles.avgRating}>
-              {rating}({reviews.length}
+              {rating}({reviewsList.length}
               {"\u00A0"}Reviews)
             </p>
           </div>
           <div>
             <svg>
-              <use href="svg/svg_spit.svg#icon-map" />
+              <use href="/svg/svg_spit.svg#icon-map" />
             </svg>
             <p>{location}</p>
           </div>
@@ -115,7 +123,7 @@ export function CamperCard({
           ))}
         </ul>
 
-        <IButton type="button" onClick={() => router.push(`/${id}`)}>
+        <IButton type="button" onClick={() => router.push(`/catalog/${id}`)}>
           Show more
         </IButton>
       </div>

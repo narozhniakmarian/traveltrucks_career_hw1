@@ -1,3 +1,6 @@
+
+"use client";
+
 import clsx from "clsx";
 import Link from "next/link";
 import styles from "./Header.module.css";
@@ -9,10 +12,10 @@ export function Header() {
   const pathname = usePathname();
 
   function ActiveLink({ href, children, className }: HeaderProps) {
-    const isActive = pathname === href || pathname.startsWith(href);
+    const isActive = pathname === href || (href !== "/" && pathname.startsWith(href));
 
     return (
-      <Link href={href} className={clsx(className, isActive && "active")}>
+      <Link href={href} className={clsx(className, isActive && styles.activeLink)}>
         {children}
       </Link>
     );
@@ -24,7 +27,7 @@ export function Header() {
         <div className="logoBox">
           <Link href="/" className={styles.logoLink}>
             <svg width={135} height={16}>
-              <use href="svg/svg_spit.svg#icon-logo" />
+              <use href="/svg/svg_spit.svg#icon-logo" />
             </svg>
           </Link>
         </div>

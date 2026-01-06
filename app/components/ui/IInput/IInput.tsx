@@ -5,14 +5,13 @@ import styles from "./IInput.module.css";
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   label?: string;
   icon?: React.ReactNode;
+  containerClassName?: string;
 }
 
-
-
 export const IInput = forwardRef<HTMLInputElement, InputProps>(
-  ({ label, icon, className, ...props }, ref) => {
+  ({ label, icon, className, containerClassName, ...props }, ref) => {
     return (
-      <label className={styles.wrapper}>
+      <label className={clsx(styles.wrapper, containerClassName)}>
         {label && <span className={styles.label}>{label}</span>}
 
         <div className={styles.field}>
