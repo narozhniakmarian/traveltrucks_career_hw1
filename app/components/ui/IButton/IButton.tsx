@@ -11,7 +11,6 @@ export function IButton({
   children,
   ...props
 }: ButtonProps) {
-  console.log(styles);
 
   return (
     <button

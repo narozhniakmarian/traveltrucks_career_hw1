@@ -12,8 +12,13 @@ export async function fetchCampers(
     ...filters,
   };
 
-  const { data } = await apiClient.get<Camper[]>("/campers", { params });
-  return data;
+  const { data } = await apiClient.get<Camper[] | { items: Camper[] }>(
+    "/campers",
+    { params }
+  );
+
+  const campers = Array.isArray(data) ? data : data.items || [];
+  return campers;
 }
 
 export async function fetchCamperById(id: string) {

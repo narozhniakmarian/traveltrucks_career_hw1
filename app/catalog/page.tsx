@@ -1,39 +1,50 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useCampersStore } from "../store/campersStore";
-import clsx from "clsx";
 import { FilterBar } from "../components/catalog/FilterBar/FilterBar";
 import { CampersList } from "../components/catalog/CampersList/CampersList";
 import { IButton } from "../components/ui/IButton/IButton";
 import { Header } from "../components/Header/Header";
+import styles from "./page.module.css";
 
 export default function CatalogPage() {
-  const { campers, loadMore, loading, hasMore } = useCampersStore();
+  const { campers, loadMore, loading, hasMore, fetchWithFilters } =
+    useCampersStore();
 
-  const flexWrapper: React.CSSProperties = { display: "flex", gap: "64px" };
+  useEffect(() => {
+    fetchWithFilters({});
+  }, []);
 
   return (
     <>
       <Header />
-      <main>
-        <section>
-          <div className="container" style={flexWrapper}>
+      <main className={styles.catalogPage}>
+        <div className={styles.container}>
+          <div className={styles.catalogWrapper}>
             <FilterBar />
-            <CampersList campers={campers} />
-            {hasMore && (
-              <IButton
-                onClick={loadMore}
-                disabled={loading}
-                variant="secondary"
-              >
-                Show more
-              </IButton>
-            )}
+            <div className={styles.catalogContent}>
+              <CampersList campers={campers} />
+              {hasMore && (
+                <IButton
+                  onClick={loadMore}
+                  disabled={loading}
+                  variant="secondary"
+                  className={styles.loadMoreButton}
+                >
+                  {loading ? "Loading..." : "Load more"}
+                </IButton>
+              )}
 
-            {!hasMore && <p>No more campers</p>}
+              {!hasMore && campers.length > 0 && (
+                <p className={styles.message}>No more campers</p>
+              )}
+              {!loading && campers.length === 0 && (
+                <p className={styles.message}>No campers found</p>
+              )}
+            </div>
           </div>
-        </section>
+        </div>
       </main>
     </>
   );

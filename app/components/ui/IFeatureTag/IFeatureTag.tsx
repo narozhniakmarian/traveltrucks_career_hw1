@@ -6,7 +6,7 @@ interface Props extends React.HTMLAttributes<HTMLDivElement> {
 }
 
 export function IFeatureTag({ variant }: Props) {
-  const { data } = FEATURES_MAP[variant];
+  const data = FEATURES_MAP[variant];
 
   return (
     <div className={styles.tagWrapper}>

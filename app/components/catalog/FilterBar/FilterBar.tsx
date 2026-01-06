@@ -27,16 +27,28 @@ export function FilterBar() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    fetchWithFilters({
-      location,
-      ...equipment,
-      ...type,
-    });
+    const filters: any = {};
+
+    if (location.trim()) {
+      filters.location = location.trim();
+    }
+
+    if (equipment.ac) filters.AC = true;
+    if (equipment.automatic) filters.transmission = "automatic";
+    if (equipment.kitchen) filters.kitchen = true;
+    if (equipment.tv) filters.TV = true;
+    if (equipment.bathroom) filters.bathroom = true;
+
+    if (type.van) filters.form = "panelTruck";
+    if (type.fullyIntegrated) filters.form = "fullyIntegrated";
+    if (type.alcove) filters.form = "alcove";
+
+    fetchWithFilters(filters);
   };
 
   return (
     <div className={styles.filterBar}>
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <IInput
           label="Location"
           icon={
@@ -45,7 +57,7 @@ export function FilterBar() {
             </svg>
           }
           placeholder="City"
-          className={styles.location}
+          containerClassName={styles.location}
           onChange={(e) => setLocation(e.target.value)}
         />
         <div className={styles.filterWrepper}>
@@ -54,20 +66,66 @@ export function FilterBar() {
             <h3>Vehicle equipment</h3>
             <div className={styles.line}></div>
             <div className={styles.checkBox}>
-              <ICheckbox variant="ac" />
-              <ICheckbox variant="automatic" />
-              <ICheckbox variant="kitchen" />
-              <ICheckbox variant="tv" />
-              <ICheckbox variant="bathroom" />
+              <ICheckbox
+                variant="ac"
+                checked={equipment.ac}
+                onChange={(e) =>
+                  setEquipment({ ...equipment, ac: e.target.checked })
+                }
+              />
+              <ICheckbox
+                variant="automatic"
+                checked={equipment.automatic}
+                onChange={(e) =>
+                  setEquipment({ ...equipment, automatic: e.target.checked })
+                }
+              />
+              <ICheckbox
+                variant="kitchen"
+                checked={equipment.kitchen}
+                onChange={(e) =>
+                  setEquipment({ ...equipment, kitchen: e.target.checked })
+                }
+              />
+              <ICheckbox
+                variant="tv"
+                checked={equipment.tv}
+                onChange={(e) =>
+                  setEquipment({ ...equipment, tv: e.target.checked })
+                }
+              />
+              <ICheckbox
+                variant="bathroom"
+                checked={equipment.bathroom}
+                onChange={(e) =>
+                  setEquipment({ ...equipment, bathroom: e.target.checked })
+                }
+              />
             </div>
           </div>
           <div className={clsx(styles.checkboxContainer)}>
             <h3>Vehicle type</h3>
             <div className={styles.line}></div>
             <div className={styles.checkBox}>
-              <ICheckbox variant="van" />
-              <ICheckbox variant="fullyIntegrated" />
-              <ICheckbox variant="alcove" />
+              <ICheckbox
+                variant="van"
+                checked={type.van}
+                onChange={(e) => setType({ ...type, van: e.target.checked })}
+              />
+              <ICheckbox
+                variant="fullyIntegrated"
+                checked={type.fullyIntegrated}
+                onChange={(e) =>
+                  setType({ ...type, fullyIntegrated: e.target.checked })
+                }
+              />
+              <ICheckbox
+                variant="alcove"
+                checked={type.alcove}
+                onChange={(e) =>
+                  setType({ ...type, alcove: e.target.checked })
+                }
+              />
             </div>
           </div>
           <IButton type="submit" variant="primary">

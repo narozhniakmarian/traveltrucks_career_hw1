@@ -1,20 +1,14 @@
 import { CamperCardType } from "@/app/types/camper";
 import { CamperCard } from "../CamperCard/CamperCard";
+import styles from "./CampersList.module.css";
 
 interface CampersListProps {
   campers: CamperCardType[];
 }
-export function CampersList({ campers }: CampersListProps) {
-  const cardList: React.CSSProperties = {
-    display: "flex",
-    flexDirection: "column",
-    gap: "32px",
-    alignItems: "center",
-    justifyContent: "center",
-  };
 
+export function CampersList({ campers }: CampersListProps) {
   return (
-    <div style={cardList}>
+    <div className={styles.cardList}>
       {campers.map((camper) => (
         <CamperCard key={camper.id} {...camper} />
       ))}

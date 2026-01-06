@@ -2,55 +2,63 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    align-items: center;
-    justify-content: center;
+    width: 100%;
 }
 
 .label {
-    font-weight: 400;
-    color: var(--gray);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: calc(24 / 16);
+    color: var(--text);
 }
 
 .field {
+    position: relative;
     display: flex;
-    gap: 8px;
     align-items: center;
+    width: 100%;
+    height: 60px;
+    background: var(--inputs);
+    border-radius: 12px;
+    padding: 0 18px;
+    transition: border-color 0.3s ease;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+    flex-shrink: 0;
 }
 
 .icon svg {
-    position: absolute;
     width: 20px;
     height: 20px;
-    fill: var(--gray);
-    transition: all .3 ease-in-out;
-
+    fill: var(--main);
+    stroke: var(--main);
+    stroke-width: 0.5px;
 }
 
 .input {
-    position: relative;
     border: none;
-    border-radius: 12px;
-    padding: 18px 337px 18px 18px;
-    width: 527px;
-    height: 60px;
-    background: var(--inputs);
+    background: transparent;
+    width: 100%;
+    height: 100%;
+    font-size: 16px;
+    line-height: calc(24 / 16);
+    color: var(--main);
+    padding: 0;
 }
 
 .input:focus {
     outline: none;
-    font-weight: 400;
-    color: var(--foreground);
-}
-
-.input:focus .icon svg {
-    fill: var(--foreground);
 }
 
 .input::placeholder {
     font-weight: 400;
     color: var(--gray);
 }
-
 
 .input[type='textarea'] {
     resize: none;

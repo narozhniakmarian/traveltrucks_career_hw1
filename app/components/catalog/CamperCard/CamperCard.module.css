@@ -34,6 +34,8 @@
 }
 
 .priceHeartBox {
+    display: flex;
+    align-items: center;
     gap: 12px;
 }
 
@@ -63,6 +65,12 @@
     margin-bottom: 24px;
 }
 
+.subtitleRow div {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
 .gray {
     width: 16px;
     height: 16px;
@@ -74,12 +82,15 @@
     fill: var(--rating);
 }
 
+.avgRating {
+    text-decoration: underline;
+    text-decoration-skip-ink: none;
+}
+
 .subtitleRow p {
     font-weight: 400;
     font-size: 16px;
     line-height: 150%;
-    text-decoration: underline;
-    text-decoration-skip-ink: none;
     color: var(--main);
 }
 
@@ -95,6 +106,9 @@
     font-size: 16px;
     line-height: 150%;
     color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .tagContainer {

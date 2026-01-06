@@ -12,18 +12,17 @@
     transition: all .3 ease-in-out;
 }
 
-.prymary {
+.primary {
     color: var(--white);
     background: var(--button);
 }
 
 
 
-.prymary:focus,
-.prymary:hover {
+.primary:focus,
+.primary:hover {
     background: var(--button-hover);
 }
-
 
 .secondary {
     border: 1px solid var(--gray-light);
