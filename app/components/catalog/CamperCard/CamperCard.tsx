@@ -11,7 +11,7 @@ export function CamperCard({
   id,
   name,
   price,
-  rating = 0,
+  rating,
   description,
   tags = [],
   gallery = [],

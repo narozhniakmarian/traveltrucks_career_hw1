@@ -21,6 +21,11 @@ export interface Camper {
   transmission?: string;
   engine?: string;
   form?: string;
+  length?: string;
+  width?: string;
+  height?: string;
+  tank?: string;
+  consumption?: string;
 }
 
 export interface CamperFilters {

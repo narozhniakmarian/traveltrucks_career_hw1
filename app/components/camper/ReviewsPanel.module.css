@@ -1,0 +1,50 @@
+.list {
+    padding-top: 44px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    list-style: none;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.header {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.avatar {
+    width: 60px;
+    height: 60px;
+    background: var(--inputs);
+    color: var(--button);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.33;
+}
+
+.comment {
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--text);
+}

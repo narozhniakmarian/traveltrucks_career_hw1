@@ -1,0 +1,18 @@
+.galleryGrid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: nowrap;
+}
+
+.imageWrapper {
+    position: relative;
+    width: 290px;
+    height: 310px;
+    border-radius: 10px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.image {
+    object-fit: cover;
+}

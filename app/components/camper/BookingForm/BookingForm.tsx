@@ -2,6 +2,8 @@
 
 import { useBookingFormStore } from '@/app/store/bookingFormStore';
 import { useEffect } from 'react';
+import { IInput } from '../../ui/IInput/IInput';
+import { IButton } from '../../ui/IButton/IButton';
 
 export function BookingForm() {
     const { name, email, date, comment, setField, reset, hydrate } =
@@ -19,19 +21,19 @@ export function BookingForm() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <input
+            <IInput
                 value={name}
                 onChange={(e) => setField('name', e.target.value)}
                 placeholder="Name"
             />
 
-            <input
+            <IInput
                 value={email}
                 onChange={(e) => setField('email', e.target.value)}
                 placeholder="Email"
             />
 
-            <input
+            <IInput
                 type="date"
                 value={date}
                 onChange={(e) => setField('date', e.target.value)}
@@ -43,7 +45,7 @@ export function BookingForm() {
                 placeholder="Comment"
             />
 
-            <button type="submit">Send</button>
+            <IButton type="submit" variant="primary">Send</IButton>
         </form>
     );
 }
