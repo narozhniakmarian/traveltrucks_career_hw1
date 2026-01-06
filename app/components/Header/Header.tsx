@@ -19,11 +19,11 @@ export function Header() {
   }
 
   return (
-    <header>
+    <header className="header">
       <div className={clsx("container", styles.headContainer)}>
         <div className="logoBox">
           <Link href="/" className={styles.logoLink}>
-            <svg>
+            <svg width={135} height={16}>
               <use href="svg/svg_spit.svg#icon-logo" />
             </svg>
           </Link>

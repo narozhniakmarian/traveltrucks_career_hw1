@@ -1,4 +1,5 @@
 .button {
+    display: inline-flex;
     border-radius: 200px;
     padding: 16px 60px;
     height: 56px;
@@ -11,23 +12,25 @@
     transition: all .3 ease-in-out;
 }
 
-.button[prymary] {
+.prymary {
     color: var(--white);
     background: var(--button);
 }
 
-.button[prymary]:focus,
-.button[prymary]:hover {
+
+
+.prymary:focus,
+.prymary:hover {
     background: var(--button-hover);
 }
 
 
-.button[secondary] {
+.secondary {
     border: 1px solid var(--gray-light);
     background: transparent;
 }
 
-.button[secondary]:focus,
-.button[secondary]:hover {
+.secondary:focus,
+.secondary:hover {
     border: 1px solid var(--button-hover);
 }

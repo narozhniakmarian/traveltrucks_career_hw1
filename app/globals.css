@@ -32,8 +32,12 @@ img {
 a {
   color: inherit;
   text-decoration: none;
+  padding: 0;
 }
 
+svg {
+  padding: 0;
+}
 
 html,
 body {
@@ -53,7 +57,13 @@ body {
 }
 
 .container {
-  max-width: 1312px;
+  max-width: 1440px;
   margin: 0 auto;
   padding: 0 64px;
+}
+
+
+.header {
+  border-bottom: 1px solid var(--badges);
+  background: var(--inputs);
 }

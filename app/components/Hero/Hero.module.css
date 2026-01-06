@@ -1,28 +1,28 @@
 .hero {
     padding: 260px 0;
-    background-image: url('/images/hero_img_opt.webp');
+    background-image: url('/images/hero_img.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    height: 100vh;
 }
 
 .contentBox {
     display: flex;
     flex-direction: column;
     gap: 40px;
+    align-items: flex-start;
     margin-right: auto;
 }
 
-.titleBox {
-    gap: 16px;
 
-}
 
 .titleBox h1 {
     font-weight: 600;
     font-size: 48px;
     line-height: 67%;
     color: var(--inputs);
+    margin-bottom: 16px;
 }
 
 .titleBox p {
