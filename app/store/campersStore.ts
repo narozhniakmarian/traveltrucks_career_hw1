@@ -22,16 +22,13 @@ export const useCampersStore = create<CampersState>((set, get) => ({
   error: null,
   filters: {},
 
-  // 🔥 Правильна реалізація setFilters
   setFilters(filters) {
     set({ filters });
   },
 
-  // 🔥 Фільтрація + перша сторінка
   async fetchWithFilters(filters) {
     set({ loading: true, error: null, page: 1, campers: [] });
 
-    // ОНОВЛЮЄМО ФІЛЬТРИ
     set({ filters });
 
     try {
@@ -49,7 +46,6 @@ export const useCampersStore = create<CampersState>((set, get) => ({
     }
   },
 
-  // 🔥 Довантаження наступних сторінок
   async loadMore() {
     const { page, filters, campers, hasMore, loading } = get();
     if (!hasMore || loading) return;

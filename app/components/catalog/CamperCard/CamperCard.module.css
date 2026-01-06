@@ -17,12 +17,16 @@
 .infoContainer {
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
 }
 
 .titleRow {
     display: flex;
+    align-items: center;
     justify-content: space-between;
     margin-bottom: 8px;
+    width: 100%;
+
 }
 
 .name {
@@ -106,6 +110,7 @@
     font-size: 16px;
     line-height: 150%;
     color: var(--text);
+    max-width: 60ch;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -116,4 +121,5 @@
     grid-template-columns: repeat(3, max-content);
     gap: 8px;
     list-style: none;
+    margin-bottom: 24px;
 }

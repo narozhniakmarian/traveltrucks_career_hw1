@@ -1,5 +1,4 @@
-import { fetchCamperById } from '@/services/campersApi';
-import { CamperDetails } from '@/components/camper/CamperDetails';
+import { fetchCamperById } from "@/app/services/campersApi";
 
 interface Props {
     params: { id: string };

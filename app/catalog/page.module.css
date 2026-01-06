@@ -18,12 +18,11 @@
     flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 40px;
 }
 
 .loadMoreButton {
     align-self: center;
-    margin-top: 20px;
 }
 
 .message {
@@ -31,4 +30,11 @@
     font-size: 16px;
     color: var(--text);
     padding: 20px;
+}
+
+.loaderWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
 }

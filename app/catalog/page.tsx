@@ -7,14 +7,23 @@ import { CampersList } from "../components/catalog/CampersList/CampersList";
 import { IButton } from "../components/ui/IButton/IButton";
 import { Header } from "../components/Header/Header";
 import styles from "./page.module.css";
+import ScrollToTop from "../components/ui/ScrollToTop";
+import { Loader } from "../components/ui/Loader/Loader";
 
 export default function CatalogPage() {
-  const { campers, loadMore, loading, hasMore, fetchWithFilters } =
+  const { campers, page, loadMore, loading, hasMore, fetchWithFilters } =
     useCampersStore();
 
   useEffect(() => {
     fetchWithFilters({});
   }, []);
+
+  const handleScrillToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <>
@@ -25,6 +34,11 @@ export default function CatalogPage() {
             <FilterBar />
             <div className={styles.catalogContent}>
               <CampersList campers={campers} />
+              {loading && (
+                <div className={styles.loaderWrapper}>
+                  <Loader />
+                </div>
+              )}
               {hasMore && (
                 <IButton
                   onClick={loadMore}
@@ -44,6 +58,7 @@ export default function CatalogPage() {
               )}
             </div>
           </div>
+          <ScrollToTop isVisible={page > 1} onClick={handleScrillToTop} />
         </div>
       </main>
     </>

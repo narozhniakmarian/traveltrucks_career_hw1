@@ -5,10 +5,10 @@ export function Loader() {
     <CirclesWithBar
       height="100"
       width="100"
-      color="var(--button)"
-      outerCircleColor="#4fa94d"
-      innerCircleColor="var(--gray)"
-      barColor="#4fa94d"
+      color="#e44848"
+      outerCircleColor="#e44848"
+      innerCircleColor="#475467"
+      barColor="#e44848"
       ariaLabel="circles-with-bar-loading"
       wrapperStyle={{}}
       wrapperClass=""

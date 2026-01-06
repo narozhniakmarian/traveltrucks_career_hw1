@@ -93,7 +93,7 @@ export function CamperCard({
               <use href="svg/svg_spit.svg#icon-rating" />
             </svg>
             <p className={styles.avgRating}>
-              {avgRating.toFixed(1)}({reviews.length}
+              {rating}({reviews.length}
               {"\u00A0"}Reviews)
             </p>
           </div>

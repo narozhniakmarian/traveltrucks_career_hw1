@@ -9,7 +9,7 @@
   --gray: #6c717b;
   --gray-light: #dadde1;
   --button: #e44848;
-  --button-hover: #d84343;
+  --button-hover: rgb(216, 67, 67);
   --rating: #ffc531;
   --background: var(--white);
   --foreground: var(--main);
@@ -66,4 +66,45 @@ body {
 .header {
   border-bottom: 1px solid var(--badges);
   background: var(--inputs);
+}
+
+
+
+
+
+.scrollToTopBtn {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 50px;
+  height: 50px;
+  background-color: var(--button);
+  border-radius: 20%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  fill: var(--white);
+  stroke: var(--white);
+  transition: opacity 0.3s, visibility 0.3s, fill 0.3s ease-in-out,
+    transform 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  z-index: 100;
+}
+
+.scrollToTopBtn svg {
+  transform: rotate(90deg);
+}
+
+.scrollToTopBtnVisible {
+  opacity: 1;
+  visibility: visible;
+}
+
+.scrollToTopBtn:hover {
+  transform: scale(1.1);
+  background-color: var(--button-hover)/50;
 }
