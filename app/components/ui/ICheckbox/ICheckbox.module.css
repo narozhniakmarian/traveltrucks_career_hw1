@@ -9,10 +9,17 @@
     height: 96px;
     mix-blend-mode: multiply;
     cursor: pointer;
+    transition: all .3 ease-in-out;
 }
 
-.box {
+.box svg {
     width: 32px;
     height: 32px;
-    fill: var(--main);
+    fill: var(--foreground);
+    stroke: var(--foreground);
+}
+
+
+input [type="checkbox"]:checked .wrapper {
+    border: 1px solid var(--button);
 }

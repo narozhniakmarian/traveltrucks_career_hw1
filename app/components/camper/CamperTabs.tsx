@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Camper } from '../types/camper';
+import { Camper } from '../../types/camper';
 import { FEATURES_MAP } from '@/app/constants/checkboxVariants';
 import { IFeatureTag } from './ui/IFeatureTag/IFeatureTag';
 

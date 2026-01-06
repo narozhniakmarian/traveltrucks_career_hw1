@@ -1,0 +1,57 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+}
+
+.label {
+    font-weight: 400;
+    color: var(--gray);
+}
+
+.field {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.icon svg {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    fill: var(--gray);
+    transition: all .3 ease-in-out;
+
+}
+
+.input {
+    position: relative;
+    border: none;
+    border-radius: 12px;
+    padding: 18px 337px 18px 18px;
+    width: 527px;
+    height: 60px;
+    background: var(--inputs);
+}
+
+.input:focus {
+    outline: none;
+    font-weight: 400;
+    color: var(--foreground);
+}
+
+.input:focus .icon svg {
+    fill: var(--foreground);
+}
+
+.input::placeholder {
+    font-weight: 400;
+    color: var(--gray);
+}
+
+
+.input[type='textarea'] {
+    resize: none;
+}
