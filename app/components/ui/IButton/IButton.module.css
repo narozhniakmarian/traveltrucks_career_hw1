@@ -1,0 +1,33 @@
+.button {
+    border-radius: 200px;
+    padding: 16px 60px;
+    height: 56px;
+    font-family: var(--font-family);
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    letter-spacing: -0.01em;
+    color: var(--main);
+    transition: all .3 ease-in-out;
+}
+
+.button[prymary] {
+    color: var(--white);
+    background: var(--button);
+}
+
+.button[prymary]:focus,
+.button[prymary]:hover {
+    background: var(--button-hover);
+}
+
+
+.button[secondary] {
+    border: 1px solid var(--gray-light);
+    background: transparent;
+}
+
+.button[secondary]:focus,
+.button[secondary]:hover {
+    border: 1px solid var(--button-hover);
+}
