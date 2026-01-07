@@ -47,11 +47,29 @@ export function FilterBar() {
     router.push(`/catalog?${params.toString()}`);
   };
 
+  const handleReset = () => {
+    setLocation("");
+    setEquipment({
+      ac: false,
+      automatic: false,
+      kitchen: false,
+      tv: false,
+      bathroom: false,
+    });
+    setType({
+      van: false,
+      fullyIntegrated: false,
+      alcove: false,
+    });
+    router.push("/catalog");
+  };
+
   return (
     <div className={styles.filterBar}>
       <form className={styles.form} onSubmit={handleSubmit}>
         <IInput
           label="Location"
+          value={location}
           icon={
             <svg>
               <use href="/svg/svg_spit.svg#icon-map" />
@@ -129,9 +147,18 @@ export function FilterBar() {
               />
             </div>
           </div>
-          <IButton type="submit" variant="primary">
-            Search
-          </IButton>
+          <div className={styles.actions}>
+            <IButton type="submit" variant="primary">
+              Search
+            </IButton>
+            <IButton
+              type="button"
+              variant="secondary"
+              onClick={handleReset}
+            >
+              Reset
+            </IButton>
+          </div>
         </div>
       </form>
     </div>

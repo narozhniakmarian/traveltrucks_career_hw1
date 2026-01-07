@@ -51,3 +51,10 @@
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
 }
+
+.actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    width: 100%;
+}

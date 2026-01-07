@@ -5,6 +5,7 @@ import styles from "./CamperCard.module.css";
 import { CamperCardType } from "@/app/types/camper";
 import { IFeatureTag } from "../../ui/IFeatureTag/IFeatureTag";
 import { IButton } from "../../ui/IButton/IButton";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useFavoritesStore } from "@/app/store/favoritesStore";
 import { FeatureKey } from "@/app/constants/checkboxVariants";
@@ -25,6 +26,11 @@ export function CamperCard({
 }: CamperCardType & any) {
   const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
   const isFavorite = useFavoritesStore((s) => s.isFavorite);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const router = useRouter();
   const slug = createSlug(id, name);

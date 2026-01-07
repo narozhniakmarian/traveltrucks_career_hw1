@@ -15,6 +15,7 @@
 }
 
 .infoContainer {
+    width: 524px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -54,12 +55,11 @@
 .priceHeartBox svg {
     fill: var(--foreground);
     cursor: pointer;
-    transition: all .3 ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
-.favorite {
-    cursor: pointer;
-    fill: var(--button);
+.priceHeartBox svg.favorite {
+    fill: var(--button) !important;
 }
 
 .subtitleRow {
@@ -107,7 +107,7 @@
     font-size: 16px;
     line-height: 150%;
     color: var(--text);
-    max-width: 60ch;
+    max-width: 50ch;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
