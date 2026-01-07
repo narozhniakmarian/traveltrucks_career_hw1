@@ -1,7 +1,7 @@
 import DatePicker from 'react-datepicker';
 import { useBookingFormStore } from '@/app/store/bookingFormStore';
 import { forwardRef, useEffect, useState } from 'react';
-import { IInput } from '../ui/IInput/IInput';
+import { IInput } from '../../ui/IInput/IInput';
 
 const DateInput = forwardRef<HTMLInputElement, any>(
     ({ value, onClick }, ref) => (

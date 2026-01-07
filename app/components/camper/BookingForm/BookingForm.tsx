@@ -4,7 +4,7 @@ import { useBookingFormStore } from '@/app/store/bookingFormStore';
 import { useEffect } from 'react';
 import { IInput } from '../../ui/IInput/IInput';
 import { IButton } from '../../ui/IButton/IButton';
-import { BookingDatePicker } from '../Calendar';
+import { BookingDatePicker } from '../Calendar/Calendar';
 import styles from './BookingForm.module.css';
 import toast from 'react-hot-toast';
 

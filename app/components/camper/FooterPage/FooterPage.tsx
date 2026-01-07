@@ -11,7 +11,6 @@ export function CamperTabs({ camper, children }: { camper: Camper, children?: Re
     const pathname = usePathname();
     const slug = createSlug(camper.id, camper.name);
 
-    // Determine active tab based on pathname
     const isFeatures = pathname.endsWith('/features') || pathname.endsWith(slug);
     const isReviews = pathname.endsWith('/reviews');
 

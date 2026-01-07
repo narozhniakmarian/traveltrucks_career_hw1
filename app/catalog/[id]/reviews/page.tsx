@@ -1,5 +1,5 @@
 import { fetchCamperById, parseSlug } from "@/app/services/campersApi";
-import { ReviewsPanel } from "@/app/components/camper/ReviewsPanel";
+import { ReviewsPanel } from "@/app/components/camper/ReviewsPanel/ReviewsPanel";
 
 interface Props {
     params: Promise<{ id: string }>;

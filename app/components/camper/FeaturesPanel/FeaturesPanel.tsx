@@ -1,5 +1,5 @@
 import { Camper } from '@/app/types/camper';
-import { IFeatureTag } from '../ui/IFeatureTag/IFeatureTag';
+import { IFeatureTag } from '../../ui/IFeatureTag/IFeatureTag';
 import { FeatureKey } from '@/app/constants/checkboxVariants';
 import styles from './FeaturesPanel.module.css';
 

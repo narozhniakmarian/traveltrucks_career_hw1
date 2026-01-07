@@ -1,5 +1,5 @@
 import { fetchCamperById, parseSlug, createSlug } from "@/app/services/campersApi";
-import { CamperDetails } from "@/app/components/camper/CamperDetails";
+import { CamperDetails } from "@/app/components/camper/CamperDetails/CamperDetails";
 import { Header } from "@/app/components/Header/Header";
 import { Metadata } from "next";
 import { redirect } from "next/navigation";

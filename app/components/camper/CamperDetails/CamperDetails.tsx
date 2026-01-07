@@ -2,9 +2,9 @@
 
 import { Camper } from '@/app/types/camper';
 import styles from './CamperDetails.module.css';
-import { Gallery } from './Gallery';
-import { CamperTabs } from './FooterPage/FooterPage';
-import { BookingForm } from './BookingForm/BookingForm';
+import { Gallery } from '../Gallery/Gallery';
+import { CamperTabs } from '../FooterPage/FooterPage';
+import { BookingForm } from '../BookingForm/BookingForm';
 
 export function CamperDetails({ camper, children }: { camper: Camper, children?: React.ReactNode }) {
     if (!camper) return null;

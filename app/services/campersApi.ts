@@ -27,7 +27,7 @@ export async function fetchCampers(
     });
 
     const response = await fetch(url.toString(), {
-        next: { revalidate: 3600 }
+        next: { revalidate: 1800 }
     });
 
     if (!response.ok) {
@@ -41,7 +41,7 @@ export async function fetchCampers(
 
 export async function fetchCamperById(id: string) {
     const response = await fetch(`${API_BASE_URL}/campers/${id}`, {
-        next: { revalidate: 3600 }
+        next: { revalidate: 1000 }
     });
 
     if (!response.ok) {

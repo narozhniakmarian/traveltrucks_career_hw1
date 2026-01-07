@@ -1,5 +1,5 @@
 import { Review } from '@/app/types/camper';
-import { StarRating } from './StarRating';
+import { StarRating } from '../StarRating/StarRating';
 import styles from './ReviewsPanel.module.css';
 
 export function ReviewsPanel({ reviews }: { reviews: Review[] }) {
