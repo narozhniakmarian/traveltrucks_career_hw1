@@ -12,6 +12,7 @@
     width: 292px;
     height: 320px;
     object-fit: cover;
+    cursor: pointer;
 }
 
 .infoContainer {
@@ -55,7 +56,7 @@
 .priceHeartBox svg {
     fill: var(--foreground);
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
+    transition: var(--transition-base);
 }
 
 .priceHeartBox svg.favorite {

@@ -42,7 +42,7 @@
     line-height: 150%;
     color: var(--white);
     background: var(--button);
-    transition: all .3s ease-in-out;
+    transition: var(--transition-base);
     text-decoration: none;
 }
 

@@ -24,20 +24,13 @@ export function CamperCard({
   location,
   ...camperData
 }: CamperCardType & any) {
-  const toggleFavorite = useFavoritesStore((s) => s.toggleFavorite);
-  const isFavorite = useFavoritesStore((s) => s.isFavorite);
-  const [mounted, setMounted] = useState(false);
+  const favorites = useFavoritesStore((state) => state.favorites);
+  const toggleFavorite = useFavoritesStore((state) => state.toggleFavorite);
 
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const isFav = !!favorites[id];
 
   const router = useRouter();
   const slug = createSlug(id, name);
-
-  const handleCardClick = () => {
-    router.push(`/catalog/${slug}`);
-  };
 
   const handleFavorite = (e: React.MouseEvent) => {
     e.stopPropagation();
@@ -56,7 +49,7 @@ export function CamperCard({
 
   const reviewsList = Array.isArray(reviews) ? reviews : [];
   const avgRating = reviewsList.length
-    ? reviewsList.reduce((sum: number, r: any) => sum + r.reviewer_rating, 0) /
+    ? reviewsList.reduce((sum: number, review: any) => sum + review.reviewer_rating, 0) /
     reviewsList.length
     : 0;
 
@@ -76,13 +69,14 @@ export function CamperCard({
   const imageUrl = gallery?.[0]?.thumb || image || "/images/placeholder.png";
 
   return (
-    <div className={styles.cardContainer} onClick={handleCardClick} style={{ cursor: 'pointer' }}>
+    <div className={styles.cardContainer}>
       <Image
         src={imageUrl}
         width={292}
         height={320}
         alt={name}
         className={styles.image}
+        onClick={() => router.push(`/catalog/${slug}`)}
       />
       <div className={styles.infoContainer}>
         <div className={styles.titleRow}>
@@ -96,7 +90,7 @@ export function CamperCard({
               width={16}
               height={16}
               onClick={handleFavorite}
-              className={isFavorite(id) ? styles.favorite : ""}
+              className={isFav ? styles.favorite : ""}
             >
               <use href="/svg/svg_spit.svg#icon-heart" />
             </svg>

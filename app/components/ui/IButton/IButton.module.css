@@ -10,7 +10,8 @@
     letter-spacing: -0.01em;
     color: var(--main);
     border: none;
-    transition: all .3 ease-in-out;
+    transition: var(--transition-base);
+    cursor: pointer;
 }
 
 .primary {
@@ -30,7 +31,14 @@
     background: transparent;
 }
 
-.secondary:focus,
 .secondary:hover {
+    border: 1px solid var(--button-hover);
+}
+
+.secondary:focus {
+    outline: none;
+}
+
+.secondary:focus-visible {
     border: 1px solid var(--button-hover);
 }

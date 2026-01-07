@@ -35,7 +35,7 @@ export function CatalogClient({ initialCampers, initialFilters }: CatalogClientP
         <>
             <Header />
             <main className={styles.catalogPage}>
-                <div className={styles.container}>
+                <div className="container">
                     <div className={styles.catalogWrapper}>
                         <FilterBar />
                         <div className={styles.catalogContent}>

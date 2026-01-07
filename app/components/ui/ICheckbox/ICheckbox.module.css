@@ -11,7 +11,7 @@
     height: 96px;
     mix-blend-mode: multiply;
     cursor: pointer;
-    transition: all .3s ease-in-out;
+    transition: var(--transition-base);
 }
 
 .input {
