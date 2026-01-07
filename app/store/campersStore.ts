@@ -12,6 +12,7 @@ interface CampersState {
   fetchWithFilters: (filters: CamperFilters) => Promise<void>;
   loadMore: () => Promise<void>;
   setFilters: (filters: CamperFilters) => void;
+  setInitialData: (campers: Camper[], filters: CamperFilters) => void;
 }
 
 export const useCampersStore = create<CampersState>((set, get) => ({
@@ -24,6 +25,17 @@ export const useCampersStore = create<CampersState>((set, get) => ({
 
   setFilters(filters) {
     set({ filters });
+  },
+
+  setInitialData(campers, filters) {
+    set({
+      campers,
+      filters,
+      page: 1,
+      hasMore: campers.length === 4,
+      loading: false,
+      error: null,
+    });
   },
 
   async fetchWithFilters(filters) {

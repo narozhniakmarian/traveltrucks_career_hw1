@@ -9,14 +9,20 @@ import { Header } from "../components/Header/Header";
 import styles from "./page.module.css";
 import ScrollToTop from "../components/ui/ScrollToTop";
 import { Loader } from "../components/ui/Loader/Loader";
+import { Camper, CamperFilters } from "../types/camper";
 
-export function CatalogClient() {
-    const { campers, page, loadMore, loading, hasMore, fetchWithFilters } =
+interface CatalogClientProps {
+    initialCampers: Camper[];
+    initialFilters: CamperFilters;
+}
+
+export function CatalogClient({ initialCampers, initialFilters }: CatalogClientProps) {
+    const { campers, page, loadMore, loading, hasMore, setInitialData } =
         useCampersStore();
 
     useEffect(() => {
-        fetchWithFilters({});
-    }, []);
+        setInitialData(initialCampers, initialFilters);
+    }, [initialCampers, initialFilters, setInitialData]);
 
     const handleScrillToTop = () => {
         window.scrollTo({

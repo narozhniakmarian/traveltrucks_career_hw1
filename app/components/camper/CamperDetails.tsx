@@ -6,7 +6,7 @@ import { Gallery } from './Gallery';
 import { CamperTabs } from './FooterPage/FooterPage';
 import { BookingForm } from './BookingForm/BookingForm';
 
-export function CamperDetails({ camper }: { camper: Camper }) {
+export function CamperDetails({ camper, children }: { camper: Camper, children?: React.ReactNode }) {
     if (!camper) return null;
 
     return (
@@ -42,7 +42,9 @@ export function CamperDetails({ camper }: { camper: Camper }) {
 
             <div className={styles.bottomSection}>
                 <div className={styles.tabsSection}>
-                    <CamperTabs camper={camper} />
+                    <CamperTabs camper={camper}>
+                        {children}
+                    </CamperTabs>
                 </div>
                 <div className={styles.bookingSection}>
                     <BookingForm />

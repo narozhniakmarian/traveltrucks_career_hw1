@@ -8,6 +8,7 @@ import { IButton } from "../../ui/IButton/IButton";
 import { useRouter } from "next/navigation";
 import { useFavoritesStore } from "@/app/store/favoritesStore";
 import { FeatureKey } from "@/app/constants/checkboxVariants";
+import { createSlug } from "@/app/services/campersApi";
 
 export function CamperCard({
   id,
@@ -26,9 +27,10 @@ export function CamperCard({
   const isFavorite = useFavoritesStore((s) => s.isFavorite);
 
   const router = useRouter();
+  const slug = createSlug(id, name);
 
   const handleCardClick = () => {
-    router.push(`/catalog/${id}`);
+    router.push(`/catalog/${slug}`);
   };
 
   const handleFavorite = (e: React.MouseEvent) => {
@@ -123,7 +125,7 @@ export function CamperCard({
           ))}
         </ul>
 
-        <IButton type="button" onClick={() => router.push(`/catalog/${id}`)}>
+        <IButton type="button" onClick={() => router.push(`/catalog/${slug}`)}>
           Show more
         </IButton>
       </div>

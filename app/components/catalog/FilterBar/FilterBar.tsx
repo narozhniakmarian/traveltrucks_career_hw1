@@ -4,46 +4,47 @@ import { IInput } from "../../ui/IInput/IInput";
 import styles from "./FilterBar.module.css";
 import { IButton } from "../../ui/IButton/IButton";
 import { useState } from "react";
-import { useCampersStore } from "@/app/store/campersStore";
+import { useRouter, useSearchParams } from "next/navigation";
 
 export function FilterBar() {
-  const { fetchWithFilters } = useCampersStore();
+  const router = useRouter();
+  const searchParams = useSearchParams();
 
-  const [location, setLocation] = useState("");
+  const [location, setLocation] = useState(searchParams.get("location") || "");
   const [equipment, setEquipment] = useState({
-    ac: false,
-    automatic: false,
-    kitchen: false,
-    tv: false,
-    bathroom: false,
+    ac: searchParams.get("AC") === "true",
+    automatic: searchParams.get("transmission") === "automatic",
+    kitchen: searchParams.get("kitchen") === "true",
+    tv: searchParams.get("TV") === "true",
+    bathroom: searchParams.get("bathroom") === "true",
   });
 
   const [type, setType] = useState({
-    van: false,
-    fullyIntegrated: false,
-    alcove: false,
+    van: searchParams.get("form") === "panelTruck",
+    fullyIntegrated: searchParams.get("form") === "fullyIntegrated",
+    alcove: searchParams.get("form") === "alcove",
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const filters: any = {};
+    const params = new URLSearchParams();
 
     if (location.trim()) {
-      filters.location = location.trim();
+      params.set("location", location.trim());
     }
 
-    if (equipment.ac) filters.AC = true;
-    if (equipment.automatic) filters.transmission = "automatic";
-    if (equipment.kitchen) filters.kitchen = true;
-    if (equipment.tv) filters.TV = true;
-    if (equipment.bathroom) filters.bathroom = true;
+    if (equipment.ac) params.set("AC", "true");
+    if (equipment.automatic) params.set("transmission", "automatic");
+    if (equipment.kitchen) params.set("kitchen", "true");
+    if (equipment.tv) params.set("TV", "true");
+    if (equipment.bathroom) params.set("bathroom", "true");
 
-    if (type.van) filters.form = "panelTruck";
-    if (type.fullyIntegrated) filters.form = "fullyIntegrated";
-    if (type.alcove) filters.form = "alcove";
+    if (type.van) params.set("form", "panelTruck");
+    if (type.fullyIntegrated) params.set("form", "fullyIntegrated");
+    if (type.alcove) params.set("form", "alcove");
 
-    fetchWithFilters(filters);
+    router.push(`/catalog?${params.toString()}`);
   };
 
   return (

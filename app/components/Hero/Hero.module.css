@@ -29,3 +29,24 @@
     line-height: 133%;
     color: var(--inputs);
 }
+
+.heroButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 200px;
+    padding: 16px 56px;
+    height: 56px;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 150%;
+    color: var(--white);
+    background: var(--button);
+    transition: all .3s ease-in-out;
+    text-decoration: none;
+}
+
+.heroButton:focus,
+.heroButton:hover {
+    background: var(--button-hover);
+}
