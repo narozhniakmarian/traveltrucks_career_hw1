@@ -27,31 +27,31 @@ export function FeaturesPanel({ camper }: { camper: Camper }) {
             </ul>
 
             <div className={styles.details}>
-                <h3 className={styles.title}>Vehicle details</h3>
+                <h3>Vehicle details</h3>
                 <div className={styles.line}></div>
                 <ul className={styles.detailsList}>
                     <li className={styles.detailsItem}>
-                        <span>Form</span>
+                        <p>Form</p>
                         <span className={styles.capitalize}>{camper.form?.replace(/([A-Z])/g, ' $1').trim()}</span>
                     </li>
                     <li className={styles.detailsItem}>
-                        <span>Length</span>
+                        <p>Length</p>
                         <span>{camper.length}</span>
                     </li>
                     <li className={styles.detailsItem}>
-                        <span>Width</span>
+                        <p>Width</p>
                         <span>{camper.width}</span>
                     </li>
                     <li className={styles.detailsItem}>
-                        <span>Height</span>
+                        <p>Height</p>
                         <span>{camper.height}</span>
                     </li>
                     <li className={styles.detailsItem}>
-                        <span>Tank</span>
+                        <p>Tank</p>
                         <span>{camper.tank}</span>
                     </li>
                     <li className={styles.detailsItem}>
-                        <span>Consumption</span>
+                        <p>Consumption</p>
                         <span>{camper.consumption}</span>
                     </li>
                 </ul>

@@ -49,11 +49,10 @@ export default async function CamperLayout({ params, children }: Props) {
         <>
             <Header />
             <main>
-                <div className="container">
-                    <CamperDetails camper={camper}>
-                        {children}
-                    </CamperDetails>
-                </div>
+                <CamperDetails camper={camper}>
+                    {children}
+                </CamperDetails>
+
             </main>
         </>
     );

@@ -18,8 +18,33 @@ export function BookingForm() {
 
     function handleSubmit(e: React.FormEvent) {
         e.preventDefault();
-        toast.success('Booking successful!');
+        toast.custom(
+            <div className={styles.toast}>
+                <div className={styles.toastContent}>
+                    <img src="/images/placeholder.png" />
+                    <div>
+                        <HandleStar />
+                        <p>Booking confirmed!</p>
+                        <HandleStar />
+                    </div>
+                </div>
+            </div>
+        )
         reset();
+    }
+
+    function HandleStar() {
+        return (
+            <svg
+                width="16"
+                height="16"
+                style={{
+                    fill: '#FFC531'
+                }}
+            >
+                <use href="/svg/svg_spit.svg#icon-rating" />
+            </svg>
+        )
     }
 
     return (
@@ -52,7 +77,7 @@ export function BookingForm() {
                     placeholder="Comment"
                 />
 
-                <IButton type="submit" variant="primary" className={styles.submitButton}>
+                <IButton type="button" variant="primary" className={styles.submitButton} onClick={handleSubmit}>
                     Send
                 </IButton>
             </form>

@@ -1,5 +1,8 @@
 .container {
-    padding-top: 44px;
+    background: var(--inputs);
+    border-radius: 10px;
+    padding: 44px;
+    width: 631px;
 }
 
 .tags {
@@ -7,17 +10,17 @@
     flex-wrap: wrap;
     gap: 8px;
     list-style: none;
-    margin-bottom: 44px;
+    margin-bottom: 100px;
 }
 
 .details {
     width: 100%;
 }
 
-.title {
-    font-size: 20px;
+.details h3 {
     font-weight: 600;
-    line-height: 1.2;
+    font-size: 20px;
+    line-height: 120%;
     margin-bottom: 24px;
 }
 
@@ -31,16 +34,16 @@
 .detailsList {
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 16px;
     list-style: none;
 }
 
 .detailsItem {
     display: flex;
     justify-content: space-between;
-    font-size: 18px;
     font-weight: 500;
-    line-height: 1.33;
+    font-size: 16px;
+    line-height: 150%;
 }
 
 .capitalize {
