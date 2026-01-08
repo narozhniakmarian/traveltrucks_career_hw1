@@ -1,12 +1,18 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "motion/react";
-import styles from ".ImageReview.module.css";
+import { motion, AnimatePresence } from "framer-motion";
+import styles from "./ImageReview.module.css";
 import clsx from "clsx";
 import { GalleryImage } from "@/app/types/camper";
 import Image from "next/image";
 
-export function ImageReview({ images }: { images: GalleryImage[] }) {
-  const [currentIndex, setCurrentIndex] = useState(0);
+export function ImageReview({
+  images,
+  initialIndex = 0,
+}: {
+  images: GalleryImage[];
+  initialIndex?: number;
+}) {
+  const [currentIndex, setCurrentIndex] = useState(initialIndex);
 
   const handlePrev = () => {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
@@ -16,10 +22,11 @@ export function ImageReview({ images }: { images: GalleryImage[] }) {
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
-  const indicatorItem = [1, 2, 3];
+  const indicatorItem =
+    images.length > 0 ? Array.from({ length: images.length }, (_, i) => i) : [];
 
   return (
-    <div className={styles.slider}>
+    <div className={styles.slider} onClick={(e) => e.stopPropagation()}>
       <AnimatePresence mode="wait">
         <motion.div
           key={currentIndex}
@@ -29,17 +36,15 @@ export function ImageReview({ images }: { images: GalleryImage[] }) {
           transition={{ duration: 0.5 }}
           className={styles.slide}
         >
-          {images.map((img, index) => (
-            <div key={index} className={styles.imageWrapper}>
-              <Image
-                src={img.original}
-                alt={`Camper gallery ${index}`}
-                fill
-                className={styles.image}
-                sizes="100vw"
-              />
-            </div>
-          ))}
+          <div className={styles.imageWrapper}>
+            <Image
+              src={images[currentIndex]?.original}
+              alt={`Camper gallery ${currentIndex}`}
+              fill
+              className={styles.image}
+              sizes="100vw"
+            />
+          </div>
           <div className={styles.overlay}></div>
         </motion.div>
       </AnimatePresence>
@@ -67,9 +72,8 @@ export function ImageReview({ images }: { images: GalleryImage[] }) {
           <button
             key={index}
             onClick={() => setCurrentIndex(index)}
-            className={`${styles.indicator} ${
-              index === currentIndex ? styles.indicatorActive : ""
-            }`}
+            className={`${styles.indicator} ${index === currentIndex ? styles.indicatorActive : ""
+              }`}
           />
         ))}
       </div>

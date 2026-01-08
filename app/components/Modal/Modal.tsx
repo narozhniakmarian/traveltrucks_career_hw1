@@ -1,3 +1,4 @@
+"use client";
 import { ReactNode, useEffect } from "react";
 import { createPortal } from "react-dom";
 
@@ -31,7 +32,14 @@ export default function Modal({ onClose, children }: ModalProps) {
 
   return createPortal(
     <div className="modal-backdrop" onClick={handleBackdropClick}>
-      <div className="modal-content">{children}</div>
+      <div className="modal-content">
+        <button className="modal-close" onClick={onClose}>
+          <svg width="32" height="32">
+            <use href="/svg/svg_spit.svg#icon-close" />
+          </svg>
+        </button>
+        {children}
+      </div>
     </div>,
     document.body
   );

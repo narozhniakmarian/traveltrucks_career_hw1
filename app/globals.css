@@ -88,6 +88,24 @@ body {
   max-width: 90vw;
   max-height: 90vh;
   background-color: var(--white);
+  border-radius: 24px;
+}
+
+.modal-close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  stroke: var(--white);
+  fill: var(--white);
+  transition: transform 0.2s;
+}
+
+.modal-close:hover {
+  transform: scale(1.1);
 }
 
 #datepicker-portal {

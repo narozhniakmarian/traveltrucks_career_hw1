@@ -8,8 +8,9 @@ import { usePathname } from "next/navigation";
 import { createSlug } from "@/app/services/campersApi";
 import Link from "next/link";
 import clsx from "clsx";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Modal from "../../Modal/Modal";
+import ImageReview from "../ImageReview/ImageReview";
 
 export function CamperDetails({
   camper,
@@ -19,7 +20,12 @@ export function CamperDetails({
   children?: React.ReactNode;
 }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const pathname = usePathname();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   if (!camper) return null;
 
   const closeModal = () => setIsModalOpen(false);
@@ -56,7 +62,13 @@ export function CamperDetails({
           </div>
 
           <div className={styles.gallerySection}>
-            <Gallery images={camper.gallery || []} />
+            <Gallery
+              images={camper.gallery || []}
+              onImageClick={(index) => {
+                setSelectedImageIndex(index);
+                setIsModalOpen(true);
+              }}
+            />
           </div>
 
           <div className={styles.descriptionSection}>
@@ -92,7 +104,14 @@ export function CamperDetails({
           </div>
         </div>
       </section>
-      {isModalOpen && <Modal onClose={closeModal}>{children}</Modal>}
+      {isModalOpen && (
+        <Modal onClose={closeModal}>
+          <ImageReview
+            images={camper.gallery || []}
+            initialIndex={selectedImageIndex}
+          />
+        </Modal>
+      )}
     </>
   );
 }

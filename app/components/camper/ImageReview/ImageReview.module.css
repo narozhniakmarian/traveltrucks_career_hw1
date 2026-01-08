@@ -1,6 +1,8 @@
 .slider {
     position: relative;
     height: 75vh;
+    width: 80vw;
+    min-width: 300px;
     border-radius: 24px;
     overflow: hidden;
 }
@@ -30,7 +32,7 @@
     width: 48px;
     height: 48px;
     border-radius: 50%;
-    background-color: rgba(17, 24, 39, 0.8);
+    background-color: rgba(144, 6, 6, 0.366);
     border: 1px solid rgba(245, 11, 34, 0.3);
     display: flex;
     align-items: center;
@@ -39,7 +41,7 @@
 }
 
 .button:hover {
-    background-color: rgba(245, 11, 34, 0.2);
+    background-color: rgba(245, 11, 34, 0.571);
 }
 
 .buttonLeft {
@@ -76,9 +78,10 @@
     border-radius: 50%;
     background-color: #6b7280;
     transition: var(--transition-base);
+    border: none;
 }
 
 .indicatorActive {
     background-color: var(--button);
-    width: 32px;
+    width: 12px;
 }
