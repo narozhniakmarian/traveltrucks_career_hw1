@@ -42,6 +42,10 @@ export function BookingDatePicker() {
     return (
         <div className="datepicker-container" style={{ width: '100%' }}>
             <DatePicker
+                preventOpenOnFocus={true}
+                autoFocus={false}
+                onFocus={(e) => e.target.blur()}
+                focusSelectedMonth={false}
                 onChange={onChange}
                 startDate={startDate}
                 endDate={endDate}

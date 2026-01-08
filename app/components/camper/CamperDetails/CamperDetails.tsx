@@ -25,7 +25,8 @@ export function CamperDetails({
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [camper.id]);
+
   if (!camper) return null;
 
   const closeModal = () => setIsModalOpen(false);
@@ -84,14 +85,12 @@ export function CamperDetails({
                     styles.tabButton,
                     isFeatures && styles.active
                   )}
-                  scroll={false}
                 >
                   Features
                 </Link>
                 <Link
                   href={`/catalog/${slug}/reviews`}
                   className={clsx(styles.tabButton, isReviews && styles.active)}
-                  scroll={false}
                 >
                   Reviews
                 </Link>
