@@ -1,10 +1,16 @@
 .filterBar {
     max-width: 360px;
+
+    @media (max-width: 480px) {
+        width: 100%;
+        margin: 0 auto;
+    }
 }
 
 .form {
     display: flex;
     flex-direction: column;
+
 }
 
 .location {
@@ -17,18 +23,23 @@
     gap: 32px;
     align-items: flex-start;
 
+    @media (max-width: 480px) {
+        align-items: center;
+    }
 }
 
 .filterWrepper h2 {
     font-weight: 500;
     font-size: 16px;
     line-height: 150%;
+    margin-right: auto;
     color: var(--text);
 }
 
 .checkboxContainer {
     display: flex;
     flex-direction: column;
+    width: 100%;
     gap: 24px;
 }
 
@@ -36,6 +47,7 @@
     font-weight: 600;
     font-size: 20px;
     line-height: 120%;
+    margin-right: auto;
     color: var(--main);
 }
 
@@ -50,6 +62,12 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
+
+    @media (max-width: 480px) {
+        grid-template-columns: repeat(2, auto);
+        align-items: center;
+        justify-content: center;
+    }
 }
 
 .actions {

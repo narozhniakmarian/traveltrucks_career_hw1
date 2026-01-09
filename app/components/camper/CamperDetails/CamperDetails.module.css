@@ -1,6 +1,11 @@
 .detailsContainer {
     padding-top: 48px;
     padding-bottom: 80px;
+
+    @media (max-width: 480px) {
+        padding-top: 24px;
+        padding-bottom: 40px;
+    }
 }
 
 .titleSection {
@@ -67,12 +72,14 @@
     fill: var(--main);
 }
 
-
-
 .head {
     border-bottom: 1px solid var(--gray-light);
     width: 100%;
     margin-bottom: 44px;
+
+    @media (max-width: 480px) {
+        margin-bottom: 24px;
+    }
 }
 
 .tabs {
@@ -103,4 +110,9 @@
 .bottomFlexContainer {
     display: flex;
     gap: 40px;
+
+    @media (max-width: 480px) {
+        flex-direction: column;
+        align-items: center;
+    }
 }

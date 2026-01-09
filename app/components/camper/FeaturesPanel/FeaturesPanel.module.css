@@ -3,6 +3,11 @@
     border-radius: 10px;
     padding: 44px;
     width: 631px;
+
+    @media (max-width: 480px) {
+        width: 100%;
+        padding: 24px;
+    }
 }
 
 .tags {
@@ -11,6 +16,10 @@
     gap: 8px;
     list-style: none;
     margin-bottom: 100px;
+
+    @media (max-width: 480px) {
+        margin-bottom: 40px;
+    }
 }
 
 .details {
