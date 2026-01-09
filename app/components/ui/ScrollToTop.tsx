@@ -19,3 +19,6 @@ const ScrollToTop = ({ isVisible, onClick }: ScrollToTopProps) => {
 };
 
 export default ScrollToTop;
+
+
+

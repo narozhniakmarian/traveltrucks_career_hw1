@@ -10,6 +10,7 @@ export function FilterBar() {
   const router = useRouter();
   const searchParams = useSearchParams();
 
+  const [isOpen, setIsOpen] = useState(false);
   const [location, setLocation] = useState(searchParams.get("location") || "");
   const [equipment, setEquipment] = useState({
     ac: searchParams.get("AC") === "true",
@@ -45,6 +46,7 @@ export function FilterBar() {
     if (type.alcove) params.set("form", "alcove");
 
     router.push(`/catalog?${params.toString()}`);
+    setIsOpen(false);
   };
 
   const handleReset = () => {
@@ -62,105 +64,126 @@ export function FilterBar() {
       alcove: false,
     });
     router.push("/catalog");
+    setIsOpen(false);
+  };
+
+  const toggleAccordion = () => {
+    setIsOpen(!isOpen);
   };
 
   return (
     <div className={styles.filterBar}>
-      <form className={styles.form} onSubmit={handleSubmit}>
-        <IInput
-          label="Location"
-          value={location}
-          icon={
-            <svg>
-              <use href="/svg/svg_spit.svg#icon-map" />
-            </svg>
-          }
-          placeholder="City"
-          containerClassName={styles.location}
-          onChange={(e) => setLocation(e.target.value)}
-        />
-        <div className={styles.filterWrepper}>
-          <h2>Filters</h2>
-          <div className={clsx(styles.checkboxContainer)}>
-            <h3>Vehicle equipment</h3>
-            <div className={styles.line}></div>
-            <div className={styles.checkBox}>
-              <ICheckbox
-                variant="ac"
-                checked={equipment.ac}
-                onChange={(e) =>
-                  setEquipment({ ...equipment, ac: e.target.checked })
-                }
-              />
-              <ICheckbox
-                variant="automatic"
-                checked={equipment.automatic}
-                onChange={(e) =>
-                  setEquipment({ ...equipment, automatic: e.target.checked })
-                }
-              />
-              <ICheckbox
-                variant="kitchen"
-                checked={equipment.kitchen}
-                onChange={(e) =>
-                  setEquipment({ ...equipment, kitchen: e.target.checked })
-                }
-              />
-              <ICheckbox
-                variant="tv"
-                checked={equipment.tv}
-                onChange={(e) =>
-                  setEquipment({ ...equipment, tv: e.target.checked })
-                }
-              />
-              <ICheckbox
-                variant="bathroom"
-                checked={equipment.bathroom}
-                onChange={(e) =>
-                  setEquipment({ ...equipment, bathroom: e.target.checked })
-                }
-              />
+      <button
+        type="button"
+        className={clsx(styles.mobileToggle, isOpen && styles.active)}
+        onClick={toggleAccordion}
+      >
+        <svg width="20" height="20">
+          <use href="/svg/svg_spit.svg#icon-arrow"></use>
+        </svg>
+        Filters
+        <svg width="20" height="20">
+          <use href="/svg/svg_spit.svg#icon-arrow"></use>
+        </svg>
+      </button>
+
+      <div className={clsx(styles.accordionContent, isOpen && styles.isOpen)}>
+        <form className={styles.form} onSubmit={handleSubmit}>
+          <IInput
+            label="Location"
+            value={location}
+            icon={
+              <svg>
+                <use href="/svg/svg_spit.svg#icon-map" />
+              </svg>
+            }
+            placeholder="City"
+            containerClassName={styles.location}
+            onChange={(e) => setLocation(e.target.value)}
+          />
+          <div className={styles.filterWrepper}>
+            <h2>Filters</h2>
+            <div className={clsx(styles.checkboxContainer)}>
+              <h3>Vehicle equipment</h3>
+              <div className={styles.line}></div>
+              <div className={styles.checkBox}>
+                <ICheckbox
+                  variant="ac"
+                  checked={equipment.ac}
+                  onChange={(e) =>
+                    setEquipment({ ...equipment, ac: e.target.checked })
+                  }
+                />
+                <ICheckbox
+                  variant="automatic"
+                  checked={equipment.automatic}
+                  onChange={(e) =>
+                    setEquipment({ ...equipment, automatic: e.target.checked })
+                  }
+                />
+                <ICheckbox
+                  variant="kitchen"
+                  checked={equipment.kitchen}
+                  onChange={(e) =>
+                    setEquipment({ ...equipment, kitchen: e.target.checked })
+                  }
+                />
+                <ICheckbox
+                  variant="tv"
+                  checked={equipment.tv}
+                  onChange={(e) =>
+                    setEquipment({ ...equipment, tv: e.target.checked })
+                  }
+                />
+                <ICheckbox
+                  variant="bathroom"
+                  checked={equipment.bathroom}
+                  onChange={(e) =>
+                    setEquipment({ ...equipment, bathroom: e.target.checked })
+                  }
+                />
+              </div>
+            </div>
+            <div className={clsx(styles.checkboxContainer)}>
+              <h3>Vehicle type</h3>
+              <div className={styles.line}></div>
+              <div className={styles.checkBox}>
+                <ICheckbox
+                  variant="van"
+                  checked={type.van}
+                  onChange={(e) => setType({ ...type, van: e.target.checked })}
+                />
+                <ICheckbox
+                  variant="fullyIntegrated"
+                  checked={type.fullyIntegrated}
+                  onChange={(e) =>
+                    setType({ ...type, fullyIntegrated: e.target.checked })
+                  }
+                />
+                <ICheckbox
+                  variant="alcove"
+                  checked={type.alcove}
+                  onChange={(e) =>
+                    setType({ ...type, alcove: e.target.checked })
+                  }
+                />
+              </div>
+            </div>
+            <div className={styles.actions}>
+              <IButton type="submit" variant="primary">
+                Search
+              </IButton>
+              <IButton
+                type="button"
+                variant="secondary"
+                onClick={handleReset}
+              >
+                Reset
+              </IButton>
             </div>
           </div>
-          <div className={clsx(styles.checkboxContainer)}>
-            <h3>Vehicle type</h3>
-            <div className={styles.line}></div>
-            <div className={styles.checkBox}>
-              <ICheckbox
-                variant="van"
-                checked={type.van}
-                onChange={(e) => setType({ ...type, van: e.target.checked })}
-              />
-              <ICheckbox
-                variant="fullyIntegrated"
-                checked={type.fullyIntegrated}
-                onChange={(e) =>
-                  setType({ ...type, fullyIntegrated: e.target.checked })
-                }
-              />
-              <ICheckbox
-                variant="alcove"
-                checked={type.alcove}
-                onChange={(e) =>
-                  setType({ ...type, alcove: e.target.checked })
-                }
-              />
-            </div>
-          </div>
-          <div className={styles.actions}>
-            <IButton type="submit" variant="primary">
-              Search
-            </IButton>
-            <IButton
-              type="button"
-              variant="secondary"
-              onClick={handleReset}
-            >
-              Reset
-            </IButton>
-          </div>
-        </div>
-      </form>
+        </form>
+      </div>
     </div>
   );
 }
