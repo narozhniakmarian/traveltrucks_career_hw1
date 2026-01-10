@@ -75,35 +75,55 @@ export function FeaturesPanel({ camper }: { camper: Camper }) {
           <li className={styles.detailsItem}>
             <p>Form</p>
             <span className={styles.capitalize}>
-              {camper.form?.replace(/([A-Z])/g, " $1").trim()}
+              {camper.form
+                ? camper.form.replace(/([A-Z])/g, " $1").trim()
+                : "N/A"}
             </span>
           </li>
           <li className={styles.detailsItem}>
             <p>Length</p>
             <span>
-              {parsedSpec.length.value} {"\u00A0"}
-              {parsedSpec.length.unit}
+              {typeof parsedSpec.length === "object"
+                ? parsedSpec.length.value
+                : parsedSpec.length}
+              {"\u00A0"}
+              {typeof parsedSpec.length === "object"
+                ? parsedSpec.length.unit
+                : ""}
             </span>
           </li>
           <li className={styles.detailsItem}>
             <p>Width</p>
             <span>
-              {parsedSpec.width.value} {"\u00A0"}
-              {parsedSpec.width.unit}
+              {typeof parsedSpec.width === "object"
+                ? parsedSpec.width.value
+                : parsedSpec.width}
+              {"\u00A0"}
+              {typeof parsedSpec.width === "object"
+                ? parsedSpec.width.unit
+                : ""}
             </span>
           </li>
           <li className={styles.detailsItem}>
             <p>Height</p>
             <span>
-              {parsedSpec.height.value} {"\u00A0"}
-              {parsedSpec.height.unit}
+              {typeof parsedSpec.height === "object"
+                ? parsedSpec.height.value
+                : parsedSpec.height}
+              {"\u00A0"}
+              {typeof parsedSpec.height === "object"
+                ? parsedSpec.height.unit
+                : ""}
             </span>
           </li>
           <li className={styles.detailsItem}>
             <p>Tank</p>
             <span>
-              {parsedSpec.tank.value} {"\u00A0"}
-              {parsedSpec.tank.unit}
+              {typeof parsedSpec.tank === "object"
+                ? parsedSpec.tank.value
+                : parsedSpec.tank}
+              {"\u00A0"}
+              {typeof parsedSpec.tank === "object" ? parsedSpec.tank.unit : ""}
             </span>
           </li>
           <li className={styles.detailsItem}>
