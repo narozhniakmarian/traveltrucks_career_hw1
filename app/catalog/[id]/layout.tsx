@@ -3,6 +3,8 @@ import { CamperDetails } from "@/app/components/camper/CamperDetails/CamperDetai
 import { Header } from "@/app/components/Header/Header";
 import { Metadata } from "next";
 
+import { notFound } from "next/navigation";
+
 interface Props {
   params: Promise<{ id: string }>;
   children: React.ReactNode;
@@ -13,13 +15,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { id } = parseSlug(slugOrId);
   try {
     const camper = await fetchCamperById(id);
-    if (!camper) return { title: "Camper Not Found" };
-
     return {
       title: camper.name,
       description: camper.description.slice(0, 160),
     };
-  } catch {
+  } catch (e: any) {
     return { title: "Camper Details" };
   }
 }
@@ -31,17 +31,15 @@ export default async function CamperLayout({ params, children }: Props) {
   let camper;
   try {
     camper = await fetchCamperById(id);
-  } catch (e) {
-    return (
-      <div>
-        <h1>Error loading camper</h1>
-        <p>Could not fetch data for ID: {id}</p>
-      </div>
-    );
+  } catch (e: any) {
+    if (e.status === 404) {
+      notFound();
+    }
+    throw e;
   }
 
   if (!camper) {
-    return <div>Camper not found</div>;
+    notFound();
   }
 
   return (

@@ -32,7 +32,10 @@ export async function fetchCampers(
     });
 
     if (!response.ok) {
-        throw new Error('Failed to fetch campers');
+        console.warn("Fetch failed:", response.status);
+        const error = new Error(`HTTP error! status: ${response.status}`);
+        (error as any).status = response.status;
+        throw error;
     }
 
     const data = await response.json();
@@ -42,19 +45,16 @@ export async function fetchCampers(
 }
 
 export async function fetchCamperById(id: string) {
-    try{
     const response = await fetch(`${API_BASE_URL}/campers/${id}`, {
         next: { revalidate: 1000 }
     });
 
     if (!response.ok) {
-         console.warn("Fetch failed:", response.status);
-      return [];
+        console.warn("Fetch failed:", response.status);
+        const error = new Error(`HTTP error! status: ${response.status}`);
+        (error as any).status = response.status;
+        throw error;
     }
 
     return await response.json() as Camper;
-}catch(e){
-    console.error("Network error:", e);
-    return [];
-}
 }
