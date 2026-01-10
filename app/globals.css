@@ -84,6 +84,11 @@ body {
   fill: currentColor;
 }
 
+.icon-stroke {
+  stroke: currentColor !important;
+  fill: none !important;
+}
+
 .modal-backdrop {
   position: fixed;
   top: 0;

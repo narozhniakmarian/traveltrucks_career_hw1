@@ -101,7 +101,7 @@ export const FEATURES_MAP = {
   water: {
     label: "Water",
     icon: (
-      <svg className="icon">
+      <svg className="icon-stroke">
         <use href="/svg/svg_spit.svg#icon-water" />
       </svg>
     ),
@@ -110,7 +110,7 @@ export const FEATURES_MAP = {
   gas: {
     label: "Gas",
     icon: (
-      <svg className="icon">
+      <svg className="icon-stroke">
         <use href="/svg/svg_spit.svg#icon-gas" />
       </svg>
     ),
@@ -119,7 +119,7 @@ export const FEATURES_MAP = {
   microwave: {
     label: "Microwave",
     icon: (
-      <svg className="icon">
+      <svg className="icon-stroke">
         <use href="/svg/svg_spit.svg#icon-microwave" />
       </svg>
     ),

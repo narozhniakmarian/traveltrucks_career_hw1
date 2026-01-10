@@ -13,6 +13,8 @@
 .box svg {
     width: 20px;
     height: 20px;
-    fill: var(--foreground);
-    stroke: var(--foreground);
+    fill:
+        var(--foreground);
+    stroke:
+        var(--foreground);
 }
