@@ -33,7 +33,7 @@ export function FeaturesPanel({ camper }: { camper: Camper }) {
       }
       return [key, val];
     })
-  );
+  ) as any;
   function parseConsumption(raw: string): { value: number; unit: string } {
     const trimmed = raw.trim();
 
@@ -83,11 +83,11 @@ export function FeaturesPanel({ camper }: { camper: Camper }) {
           <li className={styles.detailsItem}>
             <p>Length</p>
             <span>
-              {typeof parsedSpec.length === "object"
+              {parsedSpec.length && typeof parsedSpec.length === "object"
                 ? parsedSpec.length.value
-                : parsedSpec.length}
+                : (parsedSpec.length ?? "N/A")}
               {"\u00A0"}
-              {typeof parsedSpec.length === "object"
+              {parsedSpec.length && typeof parsedSpec.length === "object"
                 ? parsedSpec.length.unit
                 : ""}
             </span>
@@ -95,11 +95,11 @@ export function FeaturesPanel({ camper }: { camper: Camper }) {
           <li className={styles.detailsItem}>
             <p>Width</p>
             <span>
-              {typeof parsedSpec.width === "object"
+              {parsedSpec.width && typeof parsedSpec.width === "object"
                 ? parsedSpec.width.value
-                : parsedSpec.width}
+                : (parsedSpec.width ?? "N/A")}
               {"\u00A0"}
-              {typeof parsedSpec.width === "object"
+              {parsedSpec.width && typeof parsedSpec.width === "object"
                 ? parsedSpec.width.unit
                 : ""}
             </span>
@@ -107,11 +107,11 @@ export function FeaturesPanel({ camper }: { camper: Camper }) {
           <li className={styles.detailsItem}>
             <p>Height</p>
             <span>
-              {typeof parsedSpec.height === "object"
+              {parsedSpec.height && typeof parsedSpec.height === "object"
                 ? parsedSpec.height.value
-                : parsedSpec.height}
+                : (parsedSpec.height ?? "N/A")}
               {"\u00A0"}
-              {typeof parsedSpec.height === "object"
+              {parsedSpec.height && typeof parsedSpec.height === "object"
                 ? parsedSpec.height.unit
                 : ""}
             </span>
@@ -119,11 +119,11 @@ export function FeaturesPanel({ camper }: { camper: Camper }) {
           <li className={styles.detailsItem}>
             <p>Tank</p>
             <span>
-              {typeof parsedSpec.tank === "object"
+              {parsedSpec.tank && typeof parsedSpec.tank === "object"
                 ? parsedSpec.tank.value
-                : parsedSpec.tank}
+                : (parsedSpec.tank ?? "N/A")}
               {"\u00A0"}
-              {typeof parsedSpec.tank === "object" ? parsedSpec.tank.unit : ""}
+              {parsedSpec.tank && typeof parsedSpec.tank === "object" ? parsedSpec.tank.unit : ""}
             </span>
           </li>
           <li className={styles.detailsItem}>

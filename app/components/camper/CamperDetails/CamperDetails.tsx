@@ -35,6 +35,7 @@ export function CamperDetails({
 
   const isFeatures = pathname.endsWith("/features") || pathname.endsWith(slug);
   const isReviews = pathname.endsWith("/reviews");
+  
 
   return (
     <>

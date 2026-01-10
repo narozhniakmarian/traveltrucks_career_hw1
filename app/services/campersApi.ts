@@ -3,6 +3,7 @@ import { Camper, CamperFilters } from "../types/camper";
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL;
 
 export function createSlug(id: string, name: string): string {
+    if (!name) return id;
     return `${id}_${name.replace(/\s+/g, '_')}`;
 }
 
@@ -36,17 +37,24 @@ export async function fetchCampers(
 
     const data = await response.json();
     const campers = Array.isArray(data) ? data : data.items || [];
+
     return campers as Camper[];
 }
 
 export async function fetchCamperById(id: string) {
+    try{
     const response = await fetch(`${API_BASE_URL}/campers/${id}`, {
         next: { revalidate: 1000 }
     });
 
     if (!response.ok) {
-        throw new Error('Failed to fetch camper');
+         console.warn("Fetch failed:", response.status);
+      return [];
     }
 
     return await response.json() as Camper;
+}catch(e){
+    console.error("Network error:", e);
+    return [];
+}
 }
